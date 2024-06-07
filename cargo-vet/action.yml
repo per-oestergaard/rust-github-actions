@@ -5,9 +5,17 @@ description: 'The cargo vet subcommand is a tool to help projects ensure that th
 runs:
   using: 'composite'
   steps:
-    - name: Run cargo vet
+    - name: cache # should make cargo install faster
+      uses: actions/cache@v3
+      with:
+        path: .cargo/bin/cargo-vet
+        key: ${{ runner.os }}-cargo-vet-${{ hashFiles('.cargo/bin/cargo-vet') }}
+    - name: cargo vet install
       shell: bash
       run: |
         cargo install --locked cargo-vet
+    - name: cargo vet
+      shell: bash
+      run: |
         # cargo vet will fail if the project did not do "cargo install --locked cargo-vet" and "cargo vet init" first.
         cargo vet
