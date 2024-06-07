@@ -2,7 +2,7 @@
 
 This action runs `cargo tree` which displays the dependency tree.
 
-This is opinionated so each item is name, license, URL, feature
+This is opinionated so each item listed has name, license, URL, and feature
 
 ## Inputs
 
