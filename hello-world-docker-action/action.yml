@@ -14,9 +14,3 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.who-to-greet }}
-
-runs:
-
-  using: ubuntu-latest
-  run:
-    - cargo tree --format "{p} {l} {r} {f}'
