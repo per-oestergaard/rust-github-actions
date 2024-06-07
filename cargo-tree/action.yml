@@ -1,0 +1,12 @@
+# action.yml
+name: 'cargo tree'
+description: 'Runs cargo tree on the repository so you can see your dependencies as a tree. Tree is default: https://doc.rust-lang.org/cargo/commands/cargo-tree.html'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run cargo tree
+      shell: bash
+      run: |
+        cargo tree --format "{p} {l} {r} {f}"
+        
