@@ -8,7 +8,7 @@ runs:
     - name: cache # should make cargo install faster
       uses: actions/cache@v3
       with:
-        path: .cargo/bin/cargo-vet
+        path: /usr/local/cargo/bin/cargo-vet
         key: ${{ runner.os }}-cargo-vet-${{ hashFiles('/usr/local/cargo/bin/cargo-vet') }}
     - name: cargo vet install
       shell: bash
@@ -19,3 +19,5 @@ runs:
       run: |
         # cargo vet will fail if the project did not do "cargo install --locked cargo-vet" and "cargo vet init" first.
         cargo vet
+
+# make tests here before release
